@@ -3,21 +3,26 @@ package com.applaudostudios.womenintech.repository
 import com.applaudostudios.womenintech.data.database.WomenDao
 import com.applaudostudios.womenintech.data.network.WomenAPI
 import com.applaudostudios.womenintech.model.Women
-import java.net.UnknownHostException
+import com.applaudostudios.womenintech.util.connection.Connectivity
+import org.koin.java.KoinJavaComponent
+import java.util.concurrent.TimeoutException
 
 class WomenRepositoryImpl(private val womenAPI: WomenAPI, private val womenDao: WomenDao) :
     WomenRepository {
+
+    private val connectivity: Connectivity by KoinJavaComponent.inject(
+        Connectivity::class.java)
+
     override suspend fun getWomenList(): List<Women> {
         return try {
-            val womenList = womenAPI.getWomenList()
-            if (womenList.isNotEmpty()) {
-                womenDao.insertWomenInfoInDb(womenList)
-                womenList
-            } else {
-                womenDao.getWomenList()
+            if (connectivity.isNetworkConnected.value == true) {
+                val women = womenAPI.getWomenList()
+                womenDao.insertWomenInfoInDb(women)
+                women
             }
-        } catch (e: UnknownHostException) {
-            listOf()
+            else womenDao.getWomenList()
+        } catch (e: TimeoutException) {
+            womenDao.getWomenList()
         }
     }
 

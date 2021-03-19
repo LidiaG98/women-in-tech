@@ -40,14 +40,23 @@ class WomenListAdapter(private val clickListener: WomanListener) :
             oldItem: Women,
             newItem: Women
         ): Boolean {
-            return oldItem === newItem
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(
             oldItem: Women,
             newItem: Women
         ): Boolean {
-            return (oldItem == newItem)
+            return (oldItem.womanId == newItem.womanId &&
+                    oldItem.name == newItem.name &&
+                    oldItem.title == newItem.title &&
+                    oldItem.contribution == newItem.contribution &&
+                    oldItem.biography == newItem.biography &&
+                    oldItem.birthDate == newItem.birthDate &&
+                    oldItem.deathDate == newItem.deathDate &&
+                    oldItem.quote == newItem.quote &&
+                    oldItem.url == newItem.url &&
+                    oldItem.country == newItem.country)
         }
     }
 }
