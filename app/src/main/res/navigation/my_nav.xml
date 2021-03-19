@@ -12,7 +12,10 @@
         tools:layout="@layout/fragment_woman_details" >
         <action
             android:id="@+id/action_womanDetails_to_womanList2"
-            app:destination="@id/womanList" />
+            app:destination="@id/womanList"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <argument
             android:name="id"
             app:argType="integer"
@@ -25,6 +28,9 @@
         tools:layout="@layout/fragment_woman_list" >
         <action
             android:id="@+id/action_womanList_to_womanDetails2"
-            app:destination="@id/womanDetails" />
+            app:destination="@id/womanDetails"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
 </navigation>
