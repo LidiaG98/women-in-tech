@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="woman"
+            type="com.applaudostudios.womenintech.model.Women" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ui.WomanDetails">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                bind:layout_constraintBottom_toBottomOf="parent"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/detail_bg">
+
+                    <TextView
+                        android:id="@+id/womanName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/cherry_swash_bold"
+                        android:text="@{woman.name}"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        bind:layout_constraintEnd_toEndOf="parent"
+                        bind:layout_constraintStart_toEndOf="@+id/womanPicture"
+                        bind:layout_constraintTop_toTopOf="parent"
+                        tools:text="Ada Lovelace" />
+
+                    <TextView
+                        android:id="@+id/birthDeath"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@{woman.birthDate}"
+                        android:textColor="#DCFFFFFF"
+                        bind:layout_constraintEnd_toEndOf="parent"
+                        bind:layout_constraintStart_toEndOf="@+id/countryFlag"
+                        bind:layout_constraintTop_toTopOf="@+id/countryFlag"
+                        tools:text="1815 - 1852" />
+
+                    <TextView
+                        android:id="@+id/contribution"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@{woman.contribution}"
+                        android:textColor="#DFDFDF"
+                        bind:layout_constraintBottom_toBottomOf="@+id/countryFlag"
+                        bind:layout_constraintEnd_toEndOf="parent"
+                        bind:layout_constraintStart_toStartOf="@+id/birthDeath"
+                        bind:layout_constraintTop_toBottomOf="@+id/birthDeath"
+                        tools:text="Bases for modern computers" />
+
+                    <TextView
+                        android:id="@+id/quote"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="?attr/title_bg"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@{woman.quote}"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="italic"
+                        bind:layout_constraintEnd_toEndOf="parent"
+                        bind:layout_constraintStart_toStartOf="@+id/guideline3"
+                        bind:layout_constraintTop_toBottomOf="@+id/countryFlag"
+                        tools:text="I believe myself to possess a most singular combination of qualities exactly fitted to make me pre-eminently a discoverer of the hidden realities of nature." />
+
+                    <TextView
+                        android:id="@+id/bio"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:justificationMode="inter_word"
+                        android:text="@{woman.biography}"
+                        android:textColor="#E2FFFFFF"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintEnd_toEndOf="parent"
+                        bind:layout_constraintStart_toStartOf="@+id/guideline3"
+                        bind:layout_constraintTop_toBottomOf="@+id/quote"
+                        bind:layout_constraintVertical_bias="0.487"
+                        tools:text="Ada was the daughter of romantic poet, Lord Byron, and his wife, Anna Isabella-Byron. Her mathematical talent shone through in her early life, and her skills and interest in machines lead to a working relationship with Charles Babbage. Babbage was the inventor of the “Analytical Engine”, a complicated device that was never actually created, but resembled the elements of a modern computer. As a result of her work on the project, Ada is often referred to as the “world’s first computer programmer”. It was Lovelace's notes on the Analytical Engine that Alan Turing used as a form of inspiration for his work on the first modern computer in the 1940s" />
+
+                    <ImageView
+                        android:id="@+id/womanPicture"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:scaleType="fitXY"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        bind:layout_constraintStart_toStartOf="parent"
+                        bind:layout_constraintTop_toTopOf="parent"
+                        bind:loadImage="@{woman.url}"
+                        bind:srcCompat="@drawable/ic_flower" />
+
+                    <ImageView
+                        android:id="@+id/countryFlag"
+                        android:layout_width="61dp"
+                        android:layout_height="64dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        bind:flag="@{woman.country}"
+                        bind:layout_constraintStart_toStartOf="@+id/guideline3"
+                        bind:layout_constraintTop_toBottomOf="@+id/womanName"
+                        bind:srcCompat="@drawable/ic_usa" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintEnd_toEndOf="parent"
+                        bind:layout_constraintGuide_percent="0.5"
+                        bind:layout_constraintStart_toStartOf="parent"
+                        bind:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        bind:layout_constraintBottom_toBottomOf="parent"
+                        bind:layout_constraintEnd_toEndOf="parent"
+                        bind:layout_constraintGuide_percent="0.5"
+                        bind:layout_constraintStart_toStartOf="parent"
+                        bind:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </FrameLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
